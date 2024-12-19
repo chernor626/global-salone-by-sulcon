@@ -1,0 +1,92 @@
+{% extends 'base/index.html' %}
+{% load static %}
+
+{% block content %}
+
+
+            <!-- Modal Search Start -->
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex align-items-center bg-primary">
+                        <div class="input-group w-75 mx-auto d-flex">
+                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                            <span id="search-icon-1" class="btn bg-light border nput-group-text p-3"><i class="fa fa-search"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Search End -->
+
+
+        <!-- Header Start -->
+        <div class="container-fluid bg-breadcrumb">
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">Our Blog</h4>
+                <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    {% comment %} <li class="breadcrumb-item"><a href="#">Pages</a></li> {% endcomment %}
+                    <li class="breadcrumb-item active text-primary">Blog</li>
+                </ol>
+            </div>
+        </div>
+        <!-- Header End -->
+
+
+
+{##}
+{#    <section class="hero-wrap hero-wrap-2" style="background-image: url('{% static 'images/global_salone_palour.jpg' %}');" data-stellar-background-ratio="0.5">#}
+{#      <div class="overlay"></div>#}
+{#      <div class="container">#}
+{#        <div class="row no-gutters slider-text align-items-end">#}
+{#          <div class="col-md-9 ftco-animate pb-5">#}
+{#          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog <i class="ion-ios-arrow-forward"></i></span></p>#}
+{#            <h1 class="mb-0 bread">Blog</h1>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </section>#}
+
+
+<div class="container-fluid blog py-5">
+    <div class="container py-5">
+        <div class="d-flex flex-column mx-auto text-center mb-5" style="max-width: 800px;">
+            <h4 class="text-primary">Latest Insights</h4>
+            <h1 class="display-4 mb-4">Real Estate News & Updates</h1>
+            <p class="mb-0">
+                Explore tips, trends, and updates to stay ahead in the evolving real estate market. Whether buying, selling, or investing, we’ve got you covered.
+            </p>
+        </div>
+        <div class="row g-4">
+            {% for blog in blogs %}
+            <div class="col-lg-4 col-md-6">
+                <div class="blog-item">
+                    <div class="blog-img">
+                        <img src="{{ blog.image.url }}" class="img-fluid w-100" alt="{{ blog.title }}">
+                    </div>
+                    <div class="blog-heading ms-4">
+                        <a href="{{ blog.get_absolute_url }}" class="h4 mb-0 p-4">{{ blog.title }}</a>
+                    </div>
+                    <div class="blog-content bg-light p-4">
+                        <p class="small">{{ blog.short_content }}</p> <!-- Display short content here -->
+                        <div class="d-flex justify-content-between mb-4">
+                            <p class="mb-0 small"><i class="fa fa-calendar me-2"></i> {{ blog.created_at }}</p>
+                            <p class="mb-0 small"><i class="fa fa-user me-2"></i> {{ blog.author.username }}</p>
+                        </div>
+                        <a class="btn btn-primary py-2 px-4" href="{{ blog.get_absolute_url }}">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,166 @@
+{% extends 'base/index.html' %}
+{% load static %}
+
+{% block content %}
+
+            <!-- Header Start -->
+        <div class="container-fluid bg-breadcrumb">
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">About Us</h4>
+                <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    {% comment %} <li class="breadcrumb-item"><a href="#">Pages</a></li> {% endcomment %}
+                    <li class="breadcrumb-item active text-primary">About</li>
+                </ol>
+            </div>
+        </div>
+        <!-- Header End -->
+
+
+ <!-- About Start -->
+<div class="container-fluid about py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-7 wow fadeInLeft" data-wow-delay="0.2s">
+                <div class="h-100">
+                    <h4 class="text-primary">About Us</h4>
+                    <h1 class="display-4 mb-4">{{ about_us.subtitle }}</h1>
+                    <p class="mb-4">{{ about_us.description }}</p>
+                    <div class="text-dark mb-4">
+                        <p class="fs-5"><span class="fa fa-check text-primary me-2"></span>{{ about_us.highlight_1 }}</p>
+                        <p class="fs-5"><span class="fa fa-check text-primary me-2"></span>{{ about_us.highlight_2 }}</p>
+                        <p class="fs-5"><span class="fa fa-check text-primary me-2"></span>{{ about_us.highlight_3 }}</p>
+                    </div>
+                    <a class="btn btn-primary py-3 px-4 px-md-5 ms-2" href="{% url 'contact' %}">Contact us</a>
+                </div>
+            </div>
+            <div class="col-lg-5 wow fadeInRight" data-wow-delay="0.2s">
+                <div class="position-relative h-100">
+                    <img src="{{ about_us.image_main.url }}" class="img-fluid w-100 h-100" style="object-fit: cover;" alt="">
+                    <div class="bg-white">
+                        <div class="position-absolute pt-3 bg-white" style="width: 50%; left: 0; bottom: 0;">
+                            <div class="bg-primary p-4">
+                                <h4 class="display-2 mb-0">{{ about_us.experience_years }}+</h4>
+                                <p class="text-white fs-5 mb-0">{{ about_us.experience_text }}</p>
+                            </div>
+                        </div>
+                        <div class="position-absolute p-3 bg-white pb-0 pe-0" style="width: 50%; bottom: 0; right: 0;">
+                            <img src="{{ about_us.image_secondary.url }}" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+<!-- Banner Start -->
+<div class="container-fluid banner py-5 wow zoomIn" data-wow-delay="0.2s"
+     style="background: url('{{ banner.background_image.url }}') no-repeat center; background-size: cover;">
+    <div class="banner-design-1"></div>
+    <div class="banner-design-2"></div>
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-8">
+                <div class="">
+                    <h4 class="text-white">{{ banner.title }}</h4>
+                    <h1 class="display-4 text-white mb-0">{{ banner.subtitle }}</h1>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="d-flex align-items-center justify-content-lg-end h-100">
+                    {% if banner.button_text and banner.button_link %}
+                        <a class="btn btn-primary py-3 px-4 px-md-5 ms-2" href="{{ banner.button_link }}">{{ banner.button_text }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner End -->
+
+  <!-- Projects Start -->
+<div class="container-fluid projects bg-light py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-5 wow fadeInLeft" data-wow-delay="0.2s">
+                <div>
+                    <h4 class="text-primary">{{ projects_section.title }}</h4>
+                    <h1 class="display-4 mb-4">{{ projects_section.subtitle }}</h1>
+                    <p class="mb-5">{{ projects_section.description }}</p>
+                    <ul class="nav">
+                        {% for tab in projects_section.tabs.all %}
+                        <li class="nav-item bg-white mb-4 w-100">
+                            <a class="d-flex align-items-center h4 mb-0 p-3 {% if forloop.first %}active{% endif %}" data-bs-toggle="pill" href="#ProjectsTab-{{ forloop.counter }}">
+                                <div class="projects-icon btn-md-square bg-primary text-white me-3">
+                                    <span class="{{ tab.icon }} small"></span>
+                                </div>
+                                <span>{{ tab.tab_title }}</span>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-7 wow fadeInRight" data-wow-delay="0.2s">
+                <div class="tab-content">
+                    {% for tab in projects_section.tabs.all %}
+                    <div id="ProjectsTab-{{ forloop.counter }}" class="tab-pane fade show p-0 {% if forloop.first %}active{% endif %}">
+                        <div class="projects-item">
+                            <img src="{{ tab.image.url }}" class="img-fluid w-100" alt="{{ tab.tab_title }}">
+                            <div class="projects-content bg-white p-4">
+                                <h4 class="mb-3">{{ tab.content_title }}</h4>
+                                <p class="mb-4">{{ tab.content_description }}</p>
+                                {% if tab.button_text and tab.button_link %}
+                                <a class="btn btn-primary py-2 px-4" href="{{ tab.button_link }}">{{ tab.button_text }}</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <!-- FAQ Start -->
+<div class="container-fluid faq-section bg-light py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.2s">
+                <h4 class="text-primary">Some Important FAQ's</h4>
+                <h1 class="display-4 mb-4">Common Frequently Asked Questions?</h1>
+                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet pariatur sapiente, modi perspiciatis earum ab inventore vitae consequatur tempore quibusdam?</p>
+                <a class="btn btn-primary py-3 px-5" href="#">Have Any Questions</a>
+            </div>
+            <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.4s">
+                <div class="h-100">
+                    <div class="accordion" id="accordionExample">
+                        {% for faq in faqs %}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading{{ forloop.counter }}">
+                                <button class="accordion-button {% if forloop.first %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="collapse{{ forloop.counter }}">
+                                    Q: {{ faq.question }}
+                                </button>
+                            </h2>
+                            <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    A: {{ faq.answer }}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FAQ End -->
+
+
+
+
+{% endblock %}

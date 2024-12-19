@@ -1,0 +1,776 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Meta tags -->
+        <meta name="keywords" content="{{ seo_settings.keywords }}">
+        <meta name="description" content="{{ seo_settings.description }}">
+        <meta name="author" content="{{ seo_settings.author }}">
+        <meta name="language" content="{{ seo_settings.language }}">
+        
+        <!-- Structured Data / Schema.org -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "RealEstateAgent",
+            "name": "Global Salone",
+            "url": "https://globalsalone.com/",
+            "logo": "https://globalsalone.com/images/logo.png",
+            "image": "{{ seo_settings.og_image }}",
+            "description": "{{ seo_settings.description }}",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Your Street Address",
+                "addressLocality": "Freetown",
+                "addressRegion": "Western Area",
+                "postalCode": "0000",
+                "addressCountry": "SL"
+            },
+            "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 8.4606,
+                "longitude": -13.2302
+            },
+            "telephone": "+232-XXX-XXXXXX",
+            "openingHours": "Mo-Fr 09:00-17:00",
+            "areaServed": "Sierra Leone",
+            "sameAs": [
+                "https://www.facebook.com/YourPage",
+                "https://www.instagram.com/YourProfile",
+                "https://www.linkedin.com/in/YourProfile"
+            ]
+        }
+        </script>
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="{{ seo_settings.og_title }}">
+        <meta property="og:description" content="{{ seo_settings.og_description }}">
+        <meta property="og:image" content="{{ seo_settings.og_image }}">
+        <meta property="og:image:alt" content="Luxury real estate Sierra Leone">
+        <meta property="og:url" content="https://globalsalone.com/">
+        <meta property="og:site_name" content="Global Salone Real Estate">
+        <meta property="og:locale" content="en_US">
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{{ seo_settings.twitter_title }}">
+        <meta name="twitter:description" content="{{ seo_settings.twitter_description }}">
+        <meta name="twitter:image" content="{{ seo_settings.twitter_image }}">
+
+        <!-- Canonical URL -->
+        <link rel="canonical" href="{{ seo_settings.canonical_url }}">
+
+        <title>{{ seo_settings.og_title }}</title>
+    </head>
+
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Edu+TAS+Beginner:wght@400..700&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}">
+
+        <!-- Template Stylesheet -->
+        <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+
+        {#        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">#}
+
+
+                <!-- Libraries Stylesheet -->
+{#        <link rel="stylesheet" href=" {% static 'lib/animate/animate.min.css' %}"/>#}
+<!-- Owl Carousel CSS -->
+{#        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />#}
+    </head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid header-top">
+            <div class="container d-flex align-items-center">
+                <div class="d-flex align-items-center h-100">
+                    <a href="#" class="navbar-brand" style="height: 125px;">
+<!--                        <h1 class="text-primary mb-0"><i></i> globalsalone</h1>-->
+                         <img src="{% static 'images/global_salone_logo.png' %}" alt="Logo" style="height: 2.0cm; width: 6.6cm">
+                    </a>
+                </div>
+                <div class="w-100 h-100">
+                    <div class="topbar px-0 py-2 d-none d-lg-block" style="height: 45px;">
+                        <div class="row gx-0 align-items-center">
+                            <div class="col-lg-8 text-center text-lg-center mb-lg-0">
+                                <div class="d-flex flex-wrap">
+                                    <div class="border-end border-primary pe-3">
+                                        <a class="nav-link" href="tel:+23276303100"><i class="fas fa-phone text-primary me-2"></i> +23276303100</a>
+                                    </div>
+                                    <div class="ps-3">
+                                        <a class="nav-link" href="mailto:info@globalsalone.com"><i class="fas fa-envelope text-primary me-2"></i> info@globalsalone.com</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 text-center text-lg-end">
+                                <div class="d-flex justify-content-end">
+                                    <div class="d-flex border-end border-primary pe-3">
+                                        <a class="btn p-0 text-primary me-3" href="#"><i class="fab fa-facebook-f"></i></a>
+                                        <a class="btn p-0 text-primary me-3" href="#"><i class="fab fa-twitter"></i></a>
+                                        <a class="btn p-0 text-primary me-3" href="#"><i class="fab fa-instagram"></i></a>
+                                        <a class="btn p-0 text-primary me-0" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    </div>
+                                    <div class="dropdown ms-3">
+                                        <a href="#" class="dropdown-toggle text-white" data-bs-toggle="dropdown"><small class="text-body"><i class="fas fa-globe-europe text-primary me-2"></i> English</small></a>
+                                        <div class="dropdown-menu">
+                                            <a href="#" class="dropdown-item">English</a>
+                                            <a href="#" class="dropdown-item">French</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-bar px-0 py-lg-0" style="height: 80px;">
+                        <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-lg-end">
+                            <a href="#" class="navbar-brand-2">
+                               
+                                <img src="{% static 'images/logo.png' %}" alt="Logo">
+                            </a>  
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                                <span class="fa fa-bars"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarCollapse">
+                                <div class="navbar-nav mx-0 mx-lg-auto bg-white">
+                                        <li class="nav-item {% if request.path == '/' %}active{% endif %}">
+                                            <a href="{% url 'home' %}" class="nav-link">Home</a>
+                                        </li>
+                                        <li class="nav-item {% if request.path == '/about/' %}active{% endif %}">
+                                            <a href="{% url 'about' %}" class="nav-link">About</a>
+                                        </li>
+                                        <li class="nav-item {% if request.path == '/services/' %}active{% endif %}">
+                                            <a href="{% url 'services' %}" class="nav-link">Services</a>
+                                        </li>
+
+                                {% comment %} <li class="nav-item {% if request.path == 'https://globalsalone.net/' %}active{% endif %}">
+                                    <a href="https://globalsalone.net/" class="nav-link">Properties</a>
+                                </li> {% endcomment %}
+                                 <div class="nav-item dropdown">
+                                      <a href="#" class="nav-link" data-bs-toggle="dropdown">
+                                            <span class="dropdown-toggle">More</span>
+                                        </a>
+                                               <div class="dropdown-menu">
+                                                 {% comment %} <a href="project.html" class="dropdown-item">Testimonial</a> {% endcomment %}
+                                                   {% comment %} <a href="{% url 'team' %}" class="dropdown-item">Team</a> {% endcomment %}
+                                             </div>
+                                    </div>
+                                        <li class="nav-item {% if request.path == '/blog_list/' %}active{% endif %}">
+                                            <a href="{% url 'blog_list' %}" class="nav-link">Insights</a>
+                                        </li>
+
+
+{#                                    <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>#}
+                                    <div class="nav-btn ps-3">
+                                        <li class="nav-item {% if request.path == '/contact/' %}active{% endif %}">
+<!--                                        <button class="btn-search btn btn-primary btn-md-square mt-2 mt-lg-0 mb-4 mb-lg-0 flex-shrink-0" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search"></i></button>-->
+                                        <a href="{% url 'contact' %}" class="btn btn-primary py-2 px-4 ms-0 ms-lg-3"> Contact Us</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+        {% block content %}
+
+{##}
+{#        <!-- Modal Search Start -->#}
+{#        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">#}
+{#            <div class="modal-dialog modal-fullscreen">#}
+{#                <div class="modal-content rounded-0">#}
+{#                    <div class="modal-header">#}
+{#                        <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>#}
+{#                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>#}
+{#                    </div>#}
+{#                    <div class="modal-body d-flex align-items-center bg-primary">#}
+{#                        <div class="input-group w-75 mx-auto d-flex">#}
+{#                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">#}
+{#                            <span id="search-icon-1" class="btn bg-light border nput-group-text p-3"><i class="fa fa-search"></i></span>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        <!-- Modal Search End -->#}
+
+
+
+<div id="home-slider" class="header-carousel owl-carousel overflow-hidden">
+    {% for slider in sliders %}
+    <div class="header-carousel-item hero-section">
+        <img src="{{ slider.image.url }}" alt="{{ slider.title }}" class="slider-img">
+        <div class="carousel-caption">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-7 animated fadeInLeft">
+                        <h4 class="text-white text-uppercase fw-bold mb-4">{{ slider.title }}</h4>
+                        <h1 class="display-2 text-white mb-4">{{ slider.subtitle }}</h1>
+                        <p class="mb-5 fs-5">{{ slider.description }}</p>
+                        {% if slider.video_link %}
+                        <a class="btn btn-light py-3 px-4 px-md-5 me-2" href="{{ slider.video_link }}"><i class="fas fa-play-circle me-2"></i> Watch Video</a>
+                        {% endif %}
+                        {% if slider.learn_more_link %}
+                        <a class="btn btn-primary py-3 px-4 px-md-5 ms-2" href="{{ slider.learn_more_link }}">Learn More</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+ <!-- About Start -->
+<div class="container-fluid about py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-7 wow fadeInLeft" data-wow-delay="0.2s">
+                <div class="h-100">
+                    <h4 class="text-primary">About Us</h4>
+                    <h1 class="display-4 mb-4">{{ about_us.subtitle }}</h1>
+                    <p class="mb-4">{{ about_us.description }}</p>
+                    <div class="text-dark mb-4">
+                        <p class="fs-5"><span class="fa fa-check text-primary me-2"></span>{{ about_us.highlight_1 }}</p>
+                        <p class="fs-5"><span class="fa fa-check text-primary me-2"></span>{{ about_us.highlight_2 }}</p>
+                        <p class="fs-5"><span class="fa fa-check text-primary me-2"></span>{{ about_us.highlight_3 }}</p>
+                    </div>
+                    <a class="btn btn-primary py-3 px-4 px-md-5 ms-2" href="{% url 'contact' %}">Contact us</a>
+                </div>
+            </div>
+            <div class="col-lg-5 wow fadeInRight" data-wow-delay="0.2s">
+                <div class="position-relative h-100">
+                    <img src="{{ about_us.image_main.url }}" class="img-fluid w-100 h-100" style="object-fit: cover;" alt="">
+                    <div class="bg-white">
+                        <div class="position-absolute pt-3 bg-white" style="width: 50%; left: 0; bottom: 0;">
+                            <div class="bg-primary p-4">
+                                <h4 class="display-2 mb-0">{{ about_us.experience_years }}+</h4>
+                                <p class="text-white fs-5 mb-0">{{ about_us.experience_text }}</p>
+                            </div>
+                        </div>
+                        <div class="position-absolute p-3 bg-white pb-0 pe-0" style="width: 50%; bottom: 0; right: 0;">
+                            <img src="{{ about_us.image_secondary.url }}" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+<!-- Banner Start -->
+<div class="container-fluid banner py-5 wow zoomIn" data-wow-delay="0.2s"
+     style="background: url('{{ banner.background_image.url }}') no-repeat center; background-size: cover;">
+    <div class="banner-design-1"></div>
+    <div class="banner-design-2"></div>
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-8">
+                <div class="">
+                    <h4 class="text-white">{{ banner.title }}</h4>
+                    <h1 class="display-4 text-white mb-0">{{ banner.subtitle }}</h1>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="d-flex align-items-center justify-content-lg-end h-100">
+                    {% if banner.button_text and banner.button_link %}
+                        <a class="btn btn-primary py-3 px-4 px-md-5 ms-2" href="{{ banner.button_link }}">{{ banner.button_text }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner End -->
+
+<!-- Services Section -->
+{% if services_section %}
+<div class="container-fluid service py-5">
+    <div class="container py-5">
+        <div class="d-flex flex-column mx-auto text-center mb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+            <h4 class="text-primary">{{ services_section.title }}</h4>
+            <h1 class="display-4 mb-4">{{ services_section.subtitle }}</h1>
+            <p class="mb-0">{{ services_section.description }}</p>
+        </div>
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-3 wow fadeInLeft" data-wow-delay="0.2s">
+                <ul class="nav">
+                    {% for category in services_section.categories.all %}
+                    <li class="nav-item me-lg-0 mb-4">
+                        <a class="py-3 px-5 {% if forloop.first %}active{% endif %}" data-bs-toggle="pill" href="#ServiceTab-{{ forloop.counter }}">
+                            <span>{{ category.title }}</span>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-lg-9 wow fadeInRight" data-wow-delay="0.3s">
+                <div class="tab-content">
+                    {% for category in services_section.categories.all %}
+                    <div id="ServiceTab-{{ forloop.counter }}" class="tab-pane fade {% if forloop.first %}show active{% endif %} p-0">
+                        <div class="service-carousel owl-carousel">
+                            {% for item in category.items.all %}
+                            <div class="service-item">
+                                <img src="{{ item.image.url }}" class="img-fluid w-100" alt="{{ item.title }}">
+                                <div class="border border-top-0 p-4">
+                                    <h4 class="mb-3">{{ item.title }}</h4>
+                                    <p class="mb-4">{{ item.description }}</p>
+                                    <a class="btn btn-primary py-2 px-4" href="#">Read More</a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<p>No services section available.</p>
+{% endif %}
+
+
+ <!-- Projects Start -->
+<div class="container-fluid projects bg-light py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-5 wow fadeInLeft" data-wow-delay="0.2s">
+                <div>
+                    <h4 class="text-primary">{{ projects_section.title }}</h4>
+                    <h1 class="display-4 mb-4">{{ projects_section.subtitle }}</h1>
+                    <p class="mb-5">{{ projects_section.description }}</p>
+                    <ul class="nav">
+                        {% for tab in projects_section.tabs.all %}
+                        <li class="nav-item bg-white mb-4 w-100">
+                            <a class="d-flex align-items-center h4 mb-0 p-3 {% if forloop.first %}active{% endif %}" data-bs-toggle="pill" href="#ProjectsTab-{{ forloop.counter }}">
+                                <div class="projects-icon btn-md-square bg-primary text-white me-3">
+                                    <span class="{{ tab.icon }} small"></span>
+                                </div>
+                                <span>{{ tab.tab_title }}</span>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-7 wow fadeInRight" data-wow-delay="0.2s">
+                <div class="tab-content">
+                    {% for tab in projects_section.tabs.all %}
+                    <div id="ProjectsTab-{{ forloop.counter }}" class="tab-pane fade show p-0 {% if forloop.first %}active{% endif %}">
+                        <div class="projects-item">
+                            <img src="{{ tab.image.url }}" class="img-fluid w-100" alt="{{ tab.tab_title }}">
+                            <div class="projects-content bg-white p-4">
+                                <h4 class="mb-3">{{ tab.content_title }}</h4>
+                                <p class="mb-4">{{ tab.content_description }}</p>
+                                {% if tab.button_text and tab.button_link %}
+                                <a class="btn btn-primary py-2 px-4" href="{{ tab.button_link }}">{{ tab.button_text }}</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Projects End -->
+
+
+<!-- Blog Start -->
+<div class="container-fluid blog py-5">
+    <div class="container py-5">
+        <div class="d-flex flex-column mx-auto text-center mb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+            <h4 class="text-primary">Latest Insights</h4>
+            <h1 class="display-4 mb-4">Real Estate News & Updates</h1>
+            <p class="mb-0">
+                Explore tips, trends, and updates to stay ahead in the evolving real estate market. Whether buying, selling, or investing, we’ve got you covered.
+            </p>
+        </div>
+        <div class="row g-4">
+            {% for blog in latest_blogs %}
+            <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
+                <div class="blog-item shadow-sm rounded">
+                    <!-- Blog Image -->
+                    <div class="blog-img position-relative">
+                        <img src="{{ blog.image.url }}" class="img-fluid w-100" alt="{{ blog.title }}">
+                        {% comment %} <div class="overlay position-absolute w-100 h-100 top-0 bg-dark opacity-50"></div> {% endcomment %}
+                    </div>
+                    <!-- Blog Title -->
+                    <div class="blog-heading bg-light p-3">
+                        <a href="{{ blog.get_absolute_url }}" class="h4 mb-0 text-dark text-decoration-none">{{ blog.title }}</a>
+                    </div>
+                    <!-- Blog Short Content -->
+                    <div class="blog-content bg-light p-4">
+                        <p class="small text-muted">{{ blog.short_content|truncatewords:30 }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p class="mb-0 small text-muted"><i class="fa fa-calendar me-2"></i>{{ blog.created_at|date:"F d, Y" }}</p>
+                            <p class="mb-0 small text-muted"><i class="fa fa-user me-2"></i>{{ blog.author }}</p>
+                        </div>
+                        <!-- Call to Action -->
+                        <div class="text-end mt-3">
+                            <a class="btn btn-primary py-2 px-4" href="{{ blog.get_absolute_url }}">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Blog End -->
+
+
+ <!-- Testimonial Start -->
+<div class="container-fluid testimonial bg-dark py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-6 col-xl-5 wow fadeInUp" data-wow-delay="0.2s">
+                <h4 class="text-primary">Testimonial</h4>
+                <h1 class="display-4 text-white mb-4">Powerfull Praise Heare From Our Customers</h1>
+                <p class="mb-4">Your Trusted Partner in Property Solutions</p>
+                {% comment %} <a class="btn btn-light py-3 px-5" href="#">View All Reviews</a> {% endcomment %}
+            </div>
+            <div class="col-lg-6 col-xl-7 wow fadeInUp" data-wow-delay="0.4s">
+                <div class="owl-carousel testimonial-carousel">
+                    <div class="testimonial-item">
+                        <div class="testimonial-quote"><i class="fa fa-quote-right fa-2x"></i></div>
+                        <div class="testimonial-inner p-4">
+                            <img src="{% static 'images/testimonial-3.jpg' %}" class="img-fluid" alt="">
+                            <div class="ms-4">
+                                <h4>Li Wei </h4>
+                                <p>exporter</p>
+                                <div class="d-flex text-primary">
+                                    {% comment %} <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i> {% endcomment %}
+                                    <i class="fas fa-star text-body"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="customer-text p-4">
+                            <p class="mb-0">Global Salone has completely transformed the real estate experience in Sierra Leone. Their team is professional, reliable, and incredibly attentive to detail. Whether you’re buying, selling, or renting a property, they make the entire process seamless and stress-free.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Repeat for other testimonials -->
+                    <div class="testimonial-item">
+                        <div class="testimonial-quote"><i class="fa fa-quote-right fa-2x"></i></div>
+                        <div class="testimonial-inner p-4">
+                            <img src="{% static 'images/testimonial-1.jpg' %}" class="img-fluid" alt="">
+                            <div class="ms-4">
+                                <h4>Chen Hao</h4>
+                                <p>Profession</p>
+                                <div class="d-flex text-primary">
+                                    {% comment %} <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i> {% endcomment %}
+                                    <i class="fas fa-star text-body"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="customer-text p-4">
+                            <p class="mb-0">What sets Global Salone apart is their deep understanding of the local market and their commitment to excellence. They take the time to understand your needs and match you with the perfect property or investment opportunity.</p>
+                        </div>
+                    </div>
+                    <!-- Add more items as needed -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial End -->
+
+
+
+
+ <!-- FAQ Start -->
+<div class="container-fluid faq-section bg-light py-5">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.2s">
+                <h4 class="text-primary">Some Important FAQ's</h4>
+                <h1 class="display-4 mb-4">Common Frequently Asked Questions?</h1>
+                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet pariatur sapiente, modi perspiciatis earum ab inventore vitae consequatur tempore quibusdam?</p>
+                <a class="btn btn-primary py-3 px-5" href="#">Have Any Questions</a>
+            </div>
+            <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.4s">
+                <div class="h-100">
+                    <div class="accordion" id="accordionExample">
+                        {% for faq in faqs %}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading{{ forloop.counter }}">
+                                <button class="accordion-button {% if forloop.first %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="collapse{{ forloop.counter }}">
+                                    Q: {{ faq.question }}
+                                </button>
+                            </h2>
+                            <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    A: {{ faq.answer }}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FAQ End -->
+        {% endblock %}
+
+
+
+<!-- Footer Start -->
+<div class="container-fluid footer bg-dark py-5 wow fadeIn" data-wow-delay="0.2s">
+    <div class="container py-5">
+        <div class="row g-5 mb-5 align-items-center">
+            <div class="col-lg-7"></div>
+            <div class="col-lg-5">
+                <div class="d-flex align-items-center justify-content-center justify-content-lg-end">
+                    <a class="btn btn-light btn-md-square me-3" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-light btn-md-square me-3" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-light btn-md-square me-3" href=""><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-light btn-md-square me-0" href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="row g-5">
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h3 class="text-white mb-4">Global Salone</h3>
+                    <p class="mb-3">{{ about_us.description }}</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="text-white mb-4">Quick Links</h4>
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    <a class="nav-link" href="{% url 'about' %}">About Us</a>
+                    <a class="nav-link" href="#{% url 'services' %}">Services</a>
+                    {% comment %} <a class="nav-link" href="{% url 'Testimonial' %}">Testimonial</a> {% endcomment %}
+                    <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="text-white mb-4">Our Services</h4>
+                    {% if services_section %}
+                        {% for category in services_section.categories.all %}
+                            <a class="nav-link" href="#ServiceTab-{{ forloop.counter }}">{{ category.title }}</a>
+                        {% endfor %}
+                    {% else %}
+                        <p>No services available.</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6 col-xl-3">
+                <div class="footer-item d-flex flex-column">
+                    <h4 class="text-white mb-4">Contact Info</h4>
+                    <a class="nav-link" href="https://maps.app.goo.gl/QD76FRMRbc92puiA9"><i class="fa fa-map-marker-alt text-primary me-2"></i> 49 Circular Road, Freetown.</a>
+                    <a class="nav-link" href="mailto:info@globalsalone.com"><i class="fas fa-envelope text-primary me-2"></i> info@globalsalone.com</a>
+                    <a class="nav-link" href="tel:+23276303100"><i class="fas fa-phone text-primary me-2"></i> +23276303100</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+        
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-md-0">
+                        <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Global salone</a>, All right reserved.</span>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end text-body">
+                        <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
+                        <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
+                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
+                        Designed By <a class="border-bottom text-white" href="https://htmlcodex.com">Sulcon</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+        
+        
+        
+                <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+{#        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>#}
+        {% comment %} <script src="{% static 'lib/wow/wow.min.js ' %}"></script>
+        <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+        <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script> {% endcomment %}
+        {% comment %} <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script> {% endcomment %}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+        
+      <!-- Owl Carousel JS -->
+{#        <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>#}
+{#        <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>#}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+        <!-- Owl Carousel CSS -->
+
+
+<!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Owl Carousel JS -->
+        <script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js"></script>
+
+
+     <script>
+    $(document).ready(function() {
+        // Initialize home slider
+        $('#home-slider').owlCarousel({
+            items: 1,              // Display one item at a time
+            loop: true,            // Infinite loop
+            autoplay: true,        // Enable autoplay
+            autoplayTimeout: 5000, // Delay between transitions
+            autoplayHoverPause: true, // Pause autoplay on hover
+            nav: true,             // Show navigation arrows
+            dots: true,            // Show dots below
+            animateOut: 'fadeOut', // Exit animation
+            animateIn: 'fadeIn',   // Enter animation
+            navText: [
+                '<i class="fa fa-chevron-left"></i>', // Left arrow
+                '<i class="fa fa-chevron-right"></i>' // Right arrow
+            ]
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        $('.service-carousel').owlCarousel({
+            items: 2,              // Show two items per slide
+            margin: 20,            // Add spacing between items
+            loop: true,            // Infinite loop
+            autoplay: true,        // Enable autoplay
+            autoplayTimeout: 5000, // Delay between transitions
+            autoplayHoverPause: true, // Pause autoplay on hover
+            nav: true,             // Show navigation arrows
+            dots: true,            // Show dots below
+            navText: [
+                '<i class="fa fa-chevron-left"></i>', // Left arrow
+                '<i class="fa fa-chevron-right"></i>' // Right arrow
+            ],
+            responsive: { // Responsive behavior
+                0: {
+                    items: 1 // Show 1 item on small screens
+                },
+                768: {
+                    items: 2 // Show 2 items on medium and larger screens
+                }
+            }
+        });
+    });
+</script>
+
+
+     <script>
+    $(document).ready(function(){
+        $(".testimonial-carousel").owlCarousel({
+            items: 2,  // Show 2 items at a time
+            loop: true,  // Enable infinite loop
+            margin: 10,  // Space between items
+            autoplay: true,  // Enable autoplay
+            autoplayTimeout: 5000,  // 5 seconds delay for auto transition
+            nav: true,  // Enable navigation arrows
+            dots: true,  // Enable dots navigation
+            responsive: {
+                0: {
+                    items: 1  // Show 1 item on small screens
+                },
+                768: {
+                    items: 2  // Show 2 items on larger screens
+                }
+            }
+        });
+    });
+</script>
+
+{% comment %} 
+// JavaScript for Active Links in Footer
+document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".footer .nav-link");
+
+    window.addEventListener("scroll", () => {
+        let currentSection = "";
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+
+            if (window.pageYOffset >= sectionTop - sectionHeight / 3) {
+                currentSection = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href").includes(currentSection)) {
+                link.classList.add("active");
+            }
+        });
+    });
+}); {% endcomment %}
+
+
+
+{#        <!-- Your Custom JS -->#}
+{#        <script src="{% static 'core/js/main.js' %}"></script>#}
+
+        
+
+        <!-- Template Javascript -->
+        <script src="{% static 'core/js/main.js' %}"></script>
+    </body>
+
+</html>

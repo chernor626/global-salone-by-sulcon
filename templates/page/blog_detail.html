@@ -1,0 +1,23 @@
+{% extends 'base/index.html' %}
+
+{% block content %}
+<section class="ftco-section">
+    <br>
+    <br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h2 class="mb-3">{{ blog.title }}</h2>
+                <p class="meta">
+                    <span>By <strong>{{ blog.author }}</strong></span> | 
+                    <span>{{ blog.created_at|date:"F d, Y" }}</span>
+                </p>
+                {% if blog.image %}
+                    <p><img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="img-fluid"></p>
+                {% endif %}
+                <p>{{ blog.content|safe }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
