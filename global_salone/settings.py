@@ -99,20 +99,35 @@ LOGGING = {
 
 
 
-# Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+# # Database
+# # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'glabalsalone_db',          # Database name
+#         'USER': 'glabalsalone_db',          # MySQL username
+#         'PASSWORD': 'Corn626@',             # MySQL password
+#         'HOST': 'localhost',            # MySQL server IP or hostname
+#         'PORT': '3306',                     # Default MySQL port
+#     }
+# }
+
+
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'glabalsalone_db',         # Name of your new database
-        'USER': 'glabalsalone_db',        # Your MySQL username
-        'PASSWORD': 'Corn626@',           # Your MySQL password
-        'HOST': 'localhost',              # Database host (usually localhost)
-        'PORT': '3306',                   # MySQL default port
+        'NAME': 'glabalsalone_db',
+        'USER': 'glabalsalone_db',
+        'PASSWORD': 'Corn626@',
+        'HOST': '',  # Leave empty to use the socket
+        'PORT': '',  # Leave empty to use the socket
+        'OPTIONS': {
+            'unix_socket': '/tmp/mysql.sock',  # Path to the socket file
+        },
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
